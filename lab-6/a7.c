@@ -6,10 +6,11 @@ struct Student {
     char name[100];
     char branch[50];
     int batch_no;
-}s1;
+};
 
 int main(){
-    struct Student *ptr = &s1;
+
+    struct Student *ptr = (struct Student *)malloc(sizeof(struct Student));
     ptr->roll_no = 1;
     strcpy(ptr->name, "John Doe");
     strcpy(ptr->branch, "Computer Science");
@@ -19,6 +20,7 @@ int main(){
     printf("Name: %s\n", ptr->name);
     printf("Branch: %s\n", ptr->branch);
     printf("Batch No: %d\n", ptr->batch_no);
+    free(ptr);
 
     return 0;
 }
