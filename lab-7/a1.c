@@ -11,7 +11,7 @@ int main()
 {
    struct node *temp;
    temp = (struct node *)malloc(sizeof(struct node));
-   printf("Enter data for the node: ");
+   printf("Enter info for the node: ");
    scanf("%d", &temp->info);
    temp->link = NULL;
    printf("%d\n", temp->info);
