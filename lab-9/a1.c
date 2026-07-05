@@ -11,17 +11,25 @@ struct node
 struct node *first1 = NULL;
 struct node *first2 = NULL;
 
-void insertlist()
-{
-    struct node *n1node;
+void firstlinkedlist() {
+    struct node *n1node, *save;
 
     n1node = (struct node *)malloc(sizeof(struct node));
 
     printf("Enter the new info: ");
     scanf("%d", &n1node->info);
 
-    n1node->link = first1;
-    first1 = n1node;
+    n1node->link = NULL;
+
+    if (first1 == NULL) {
+        first1 = n1node;
+    } else {
+        save = first1;
+        while (save->link != NULL) {
+            save = save->link;
+        }
+        save->link = n1node;
+    }
 }
 
 void copylinkedlist()
@@ -86,7 +94,7 @@ int main()
 
     for (int i = 1; i <= n; i++)
     {
-        insertlist();
+        firstlinkedlist();
     }
 
     copylinkedlist();
