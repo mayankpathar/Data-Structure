@@ -33,14 +33,14 @@ void firstlinkedlist() {
 }
 void reversellinkedlist()
 {
-   struct node *prev = NULL, *current = first1, *next = NULL;
+   struct node *prev = NULL, *current = first1, *save = NULL;
 
     while (current != NULL)
     {
-        next = current->link;
+        save = current->link;
         current->link = prev; 
         prev = current;     
-        current = next;       
+        current = save;       
     }
     first1 = prev; 
 }
