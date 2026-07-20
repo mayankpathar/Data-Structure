@@ -118,14 +118,21 @@ void display()
 
 int main()
 {
-    int n;
-    printf("Enter the number of nodes: ");
+    int n,m;
+    printf("Enter the number of insertfirst nodes: ");
     scanf("%d", &n);
     for (int i = 0; i < n; i++)
     {
         insertfirst();
+        
+    }
+    printf("Enter the number of lastfirst nodes: ");
+    scanf("%d", &m);
+    for (int i = 0; i <m; i++)
+    {
         lastinsert();
     }
+    
     display();
     deletespecified();
     display();  
