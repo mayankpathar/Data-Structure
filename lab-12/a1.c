@@ -19,7 +19,7 @@ struct node
 
 struct node *first = NULL;
 
-void insertFront()
+void insertfirst()
 {
     struct node *newnode;
 
@@ -39,7 +39,7 @@ void insertFront()
     printf("Node Inserted.\n");
 }
 
-void insertEnd()
+void insertlast()
 {
     struct node *newnode, *temp;
 
@@ -143,14 +143,14 @@ int main()
     scanf("%d", &n);
     for (int i = 0; i < n; i++)
     {
-        insertFront();
+        insertfirst();
         
     }
     printf("Enter the number of lastfirst nodes: ");
     scanf("%d", &m);
     for (int i = 0; i <m; i++)
     {
-        insertEnd();
+        insertlast();
     }
     
     display();
