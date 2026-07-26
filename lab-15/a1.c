@@ -1,3 +1,4 @@
+// Write a program to convert infix notation to postfix notation using stack.
 #include <stdio.h>
 #include <ctype.h>
 

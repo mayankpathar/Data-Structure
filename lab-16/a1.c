@@ -1,3 +1,4 @@
+//  Write a program for evaluation of postfix Expression using Stack.
 #include <stdio.h>
 
 #define MAX 100
