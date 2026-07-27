@@ -40,17 +40,20 @@ int main()
                 case '+':
                     push(a + b);
                     break;
+
                 case '-':
                     push(a - b);
                     break;
+
                 case '*':
                     push(a * b);
                     break;
+
                 case '/':
                     push(a / b);
                     break;
+
                 case '^':
-                {
                     result = 1;
                     while (b > 0)
                     {
@@ -59,7 +62,6 @@ int main()
                     }
                     push(result);
                     break;
-                }
             }
         }
     }

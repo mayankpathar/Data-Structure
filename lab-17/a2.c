@@ -4,8 +4,8 @@
 
 struct node
 {
-    int data;
-    struct node *next;
+    int info;
+    struct node *link;
 };
 
 struct node *front = NULL, *rear = NULL;
@@ -15,8 +15,8 @@ void enqueue(int value)
     struct node *newnode;
 
     newnode = (struct node *)malloc(sizeof(struct node));
-    newnode->data = value;
-    newnode->next = NULL;
+    newnode->info = value;
+    newnode->link = NULL;
 
     if (rear == NULL)
     {
@@ -24,7 +24,7 @@ void enqueue(int value)
     }
     else
     {
-        rear->next = newnode;
+        rear->link = newnode;
         rear = newnode;
     }
 
@@ -42,9 +42,9 @@ void dequeue()
     }
 
     temp = front;
-    printf("Deleted: %d\n", front->data);
+    printf("Deleted: %d\n", front->info);
 
-    front = front->next;
+    front = front->link;
 
     if (front == NULL)
         rear = NULL;
@@ -67,8 +67,8 @@ void display()
 
     while (temp != NULL)
     {
-        printf("%d ", temp->data);
-        temp = temp->next;
+        printf("%d ", temp->info);
+        temp = temp->link;
     }
 
     printf("\n");
