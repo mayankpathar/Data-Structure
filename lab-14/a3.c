@@ -37,6 +37,11 @@ int main() {
 
     qsort(arr, n, sizeof(struct Interval), compare);
 
+
+    
+
+
+
     push(arr[0]);
 
     for(i = 1; i < n; i++) {
