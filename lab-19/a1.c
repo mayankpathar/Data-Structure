@@ -121,11 +121,34 @@ int main(){
         scanf("%d", &value);
         root = insert(root,value);
     }
-    while (1)
-    {
-       
-    }
-    
+   
+   switch (1)
+   {
+    case 1:
+        printf("Enter a value you want to delete: ");
+        scanf("%d", &value);
+        deleteNode(root, value);
+        break;
+    case 2:
+        printf("Enter a value you want to search: ");
+        scanf("%d", &value);
+        searchNode(root, value);
+        break;
+    case 3:
+        printf("Preorder Traversal: ");
+        preorderTraversal(root);
+        break;
+    case 4:
+        printf("Postorder Traversal: ");
+        postorderTraversal(root);
+        break;
+    case 5:
+        printf("Inorder Traversal: ");
+        inorderTraversal(root);
+        break;
+    case 6:
+        exit(0);
+   }
 
    
     
