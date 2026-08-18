@@ -119,7 +119,7 @@ void fixViolation(Node** root, Node* newNode) {
                     parent = newNode->parent;
                 }
 
-                // Case 3: newNode is right child, perform left rotation
+                
                 leftRotate(root, grandparent);
                 int tempColor = parent->color;
                 parent->color = grandparent->color;
@@ -129,21 +129,19 @@ void fixViolation(Node** root, Node* newNode) {
         }
     }
 
-    (*root)->color = BLACK; // Ensure the root is always black
+    (*root)->color = BLACK; 
 }
 int main() {
     Node* root = NULL;
 
-    // Insert nodes into the Red-Black Tree
+
     int values[] = {10, 20, 30, 15, 25, 5};
     for (int i = 0; i < sizeof(values) / sizeof(values[0]); i++) {
         Node* newNode = createNode(values[i]);
-        // Insert the new node into the tree (insertion logic not shown)
-        // After insertion, fix any violations
+        
         fixViolation(&root, newNode);
     }
 
-    // The tree is now a valid Red-Black Tree
     return 0;
 }
 
