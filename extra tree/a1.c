@@ -6,6 +6,7 @@ struct Node
     int data;
     struct Node *left;
     struct Node *right;
+    int level;
 };
 
 typedef struct Node Node;
@@ -17,119 +18,62 @@ Node *createNode(int data)
     newNode->data = data;
     newNode->left = NULL;
     newNode->right = NULL;
+    newNode->level = 0;
 
     return newNode;
 }
 
-Node *insertNode(Node *root, int data)
-{
+ Node *insertNode(Node *root, int data){
+    
     if (root == NULL)
-        return createNode(data);
-
-    if (data < root->data)
-        root->left = insertNode(root->left, data);
-    else
-        root->right = insertNode(root->right, data);
-
-    return root;
-}
-
-int findHeight(Node *root)
-{
-    int leftHeight;
-    int rightHeight;
-
-    if (root == NULL)
-        return 0;
-
-    leftHeight = findHeight(root->left);
-    rightHeight = findHeight(root->right);
-
-    if (leftHeight > rightHeight)
-        return leftHeight + 1;
-
-    return rightHeight + 1;
-}
-
-void findLongestPath(Node *root)
-{
-    Node *currentNode;
-    int leftHeight;
-    int rightHeight;
-
-    if (root == NULL)
-        return;
-
-    currentNode = root;
-
-    printf("\nLongest Path From Root: ");
-    printf("%d", currentNode->data);
-
-    while (currentNode->left != NULL || currentNode->right != NULL)
     {
-        leftHeight = findHeight(currentNode->left);
-        rightHeight = findHeight(currentNode->right);
+        Node *newNode = createNode(data);
+        newNode->level = 1; 
+        return newNode;
+    }
+    else if (data < root->data)
+    {
+        Node *leftChild = insertNode(root->left, data);
+        root->left = leftChild;
+        leftChild->level = root->level + 1; 
+    }
+    else if (data > root->data)
+    {
+        Node *rightChild = insertNode(root->right, data);
+        root->right = rightChild;
+        rightChild->level = root->level + 1; 
+    }
+    return root;
 
-        if (leftHeight >= rightHeight)
-            currentNode = currentNode->left;
-        else
-            currentNode = currentNode->right;
-
-        printf(" -> %d", currentNode->data);
+}
+void searchNode(struct Node *root, int value){
+    if (root == NULL){
+        printf("Value not found in the BST.\n");
+        return;
     }
 
-    printf("\nNumber of Nodes = %d", findHeight(root));
-    printf("\nNumber of Levels = %d\n", findHeight(root));
+    if (value < root->data){
+        searchNode(root->left, value);
+    }
+    else if (value > root->data){
+        searchNode(root->right, value);
+    }
+    else{
+            
+        printf("%d",root->data);
+        printf(" value node of  level ");
+        printf("%d",root->level);
+    }
+
 }
 
-void findBalance(Node *root)
-{
-    int leftHeight;
-    int rightHeight;
-    int balance;
-
-    if (root == NULL)
-        return;
-
-    findBalance(root->left);
-
-    leftHeight = findHeight(root->left);
-    rightHeight = findHeight(root->right);
-
-    balance = leftHeight - rightHeight;
-
-    printf("Node %d : Balance Factor = %d : ", root->data, balance);
-
-    if (balance >= 2)
-        printf("Critical Node\n");
-    else if (balance <= -2)
-        printf("Critical Node\n");
-    else if (balance == 1)
-        printf("Left Heavy\n");
-    else if (balance == -1)
-        printf("Right Heavy\n");
-    else
-        printf("Balanced\n");
-
-    findBalance(root->right);
-}
-
-void displayTree(Node *root)
-{
-    if (root == NULL)
-        return;
-
-    displayTree(root->left);
-    printf("%d ", root->data);
-    displayTree(root->right);
-}
 
 int main()
 {
     Node *root = NULL;
     int numberOfNodes;
     int value;
-    int levels;
+  
 
     printf("Enter number of nodes: ");
     scanf("%d", &numberOfNodes);
@@ -142,17 +86,9 @@ int main()
         root = insertNode(root, value);
     }
 
-    printf("\nInorder Traversal: ");
-    displayTree(root);
-
-    levels = findHeight(root);
-
-    printf("\n\nNumber of Levels = %d\n", levels);
-
-    findLongestPath(root);
-
-    printf("\n\nBalance Status of Each Node:\n");
-    findBalance(root);
+    printf("Enter a value to search: ");
+    scanf("%d", &value);
+    searchNode(root, value);
 
     return 0;
 }
