@@ -61,11 +61,12 @@ void searchNode(struct Node *root, int value){
     else{
             
         printf("%d",root->data);
-        printf(" value node of  level ");
+        printf("\n value node of  level ");
         printf("%d",root->level);
     }
 
 }
+
 
 
 int main()
