@@ -20,16 +20,14 @@ int main()
     printf("Enter position: ");
     scanf("%d", &m);
 
-    for (int i =m-1 ; i <n; i++)
+    for (int i = m - 1; i < n; i++)
     {
         arr[i] = arr[i + 1];
     }
 
-    arr[n-1] = NULL;
+    arr[n - 1] = NULL;
 
-   
-
-    for (int i = 0; i < n-1; i++)
+    for (int i = 0; i < n - 1; i++)
     {
         printf("%d ", arr[i]);
     }
